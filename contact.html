@@ -25,18 +25,23 @@
           let Last_Name=document.getElementById('Last_Name').value;
           let Email_Address=document.getElementById('Email_Address').value;
           let Message=document.getElementById('Message').value;
-          data=String({"email": Email_Address,"firstName": First_Name,"lastName": Last_Name,"message": Message})
+          document.getElementById('Message').value="";
+          document.getElementById('Email_Address').value="";
+          document.getElementById('Last_Name').value="";
+          document.getElementById('First_Name').value="";
+          data={"email": Email_Address,"firstName": First_Name,"lastName": Last_Name,"message": Message};
           console.log(data)
-          url="http://kit-academy-production.up.railway.app/contact/";
-          params={
+          url="http://127.0.0.1:8000/contact/email/";
+          params = {
               method:'post',
               headers:{
                   'Content-Type':'application/json'
               },
-              body:data
+              body:JSON.stringify(data)
           }
-          fetch(url,params).then(response=>response.json())
-          .then(data=>console.log(data))
+          fetch(url,params).then((response)=>{return response.json();
+        }).then((data)=>{console.log(data);
+        })
         }
         </script>
 </head>
@@ -96,7 +101,6 @@
                 </ul>
             </aside>
             <form id="form" method="post" action="contactus.php" class="contact__form">
-                <p id="demo">A Paragraph</p>
                 <div class="form__name">
                     <input type="text" id="First_Name" name="First_Name" placeholder="First Name" required>
                     <input type="text" id="Last_Name" name="Last_Name" placeholder="Last Name" required>

@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <script>
         function myFunction() {
-          document.getElementById("demo").innerHTML = "inputValue";
           let First_Name=document.getElementById('First_Name').value;
           let Last_Name=document.getElementById('Last_Name').value;
           let Email_Address=document.getElementById('Email_Address').value;
@@ -31,7 +30,7 @@
           document.getElementById('First_Name').value="";
           data={"email": Email_Address,"firstName": First_Name,"lastName": Last_Name,"message": Message};
           console.log(data)
-          url="http://127.0.0.1:8000/contact/email/";
+          url="https://kit-academy-production.up.railway.app/contact/email/";
           params = {
               method:'post',
               headers:{
